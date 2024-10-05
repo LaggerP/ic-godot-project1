@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://gxeh0f8rlfn3"]
+
+[ext_resource type="Script" path="res://objects/Drops/life_potion.gd" id="1_cqsgh"]
+[ext_resource type="Texture2D" uid="uid://du3evtlayrxu1" path="res://assets/life_potion.png" id="1_qq73e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5w5dn"]
+radius = 18.0
+height = 42.0
+
+[sub_resource type="Animation" id="Animation_g5lgq"]
+resource_name = "idle"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3, 0.433333, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, 0), Vector2(0, -1), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kqfi5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ttwy"]
+_data = {
+"RESET": SubResource("Animation_kqfi5"),
+"idle": SubResource("Animation_g5lgq")
+}
+
+[node name="LifePotion" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_cqsgh")
+value = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3.03125, 3.03125)
+texture = ExtResource("1_qq73e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -1)
+shape = SubResource("CapsuleShape2D_5w5dn")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4ttwy")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://kkkc248sbeom"]
+
+[ext_resource type="Texture2D" uid="uid://b344548pufh6l" path="res://assets/cat.png" id="1_eebhr"]
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_p6eid"]
+[ext_resource type="AudioStream" uid="uid://dart2018anu0y" path="res://assets/sounds/Evil 02.ogg" id="3_imm3c"]
+[ext_resource type="AudioStream" uid="uid://b3vodefssb056" path="res://assets/sounds/Menu Selection Click.wav" id="4_de5pc"]
+
+[node name="MainMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p6eid")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -94.5
+offset_right = 136.0
+offset_bottom = -71.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "SALMÓN THE CAT"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -85.0
+offset_right = 136.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Cat" type="Sprite2D" parent="VBoxContainer"]
+position = Vector2(128, -83)
+scale = Vector2(1.12917, 1.0875)
+texture = ExtResource("1_eebhr")
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Jugar"
+
+[node name="Credits" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Créditos"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Salir"
+
+[node name="MainMenuSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_imm3c")
+autoplay = true
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_de5pc")
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

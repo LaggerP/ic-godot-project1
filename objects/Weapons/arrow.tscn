@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dy6mdv2b0w8ym"]
+
+[ext_resource type="Script" path="res://objects/Weapons/arrow.gd" id="1_qji4j"]
+[ext_resource type="Texture2D" uid="uid://ct8nmxevxvlo0" path="res://assets/arrow.png" id="2_6icya"]
+[ext_resource type="AudioStream" uid="uid://kdh5wb5w5c6t" path="res://assets/sounds/weapons/arrow-impact.mp3" id="3_jlimu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_paueh"]
+radius = 7.0
+
+[node name="Arrow" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_qji4j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_6icya")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(12, -1)
+shape = SubResource("CircleShape2D_paueh")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="ArrowSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jlimu")
+autoplay = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]

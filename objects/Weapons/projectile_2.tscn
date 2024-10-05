@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://wyaxgwy0cjek"]
+
+[ext_resource type="Script" path="res://objects/Weapons/projectile_2.gd" id="1_6b44g"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_w3qec"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qe15s"]
+size = Vector2(10, 10)
+
+[sub_resource type="Gradient" id="Gradient_2p8qa"]
+offsets = PackedFloat32Array(0, 0.0040404, 0.385859, 0.951515)
+colors = PackedColorArray(0, 0, 0, 1, 0.0366492, 0.0366492, 0.0366492, 1, 1, 1, 1, 1, 0.905759, 0.905759, 0.905759, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_36o2p"]
+gradient = SubResource("Gradient_2p8qa")
+
+[sub_resource type="Curve" id="Curve_her7o"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.803059, 0.0215548), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lkyen"]
+curve = SubResource("Curve_her7o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2rri5"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 8.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = -10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_lkyen")
+color = Color(0, 0.623529, 0, 1)
+color_ramp = SubResource("GradientTexture1D_36o2p")
+turbulence_enabled = true
+turbulence_influence_max = 0.751
+
+[node name="Projectile2" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_6b44g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.0648734, 0.264044, 0, 1)
+texture = SubResource("PlaceholderTexture2D_w3qec")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color(0, 0.129264, 0.0868317, 1)
+shape = SubResource("RectangleShape2D_qe15s")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 220
+process_material = SubResource("ParticleProcessMaterial_2rri5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]

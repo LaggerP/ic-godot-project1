@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=3 format=3 uid="uid://colsm3q4b6w0k"]
+
+[ext_resource type="Script" path="res://objects/EnemyType.gd" id="1_26i5j"]
+[ext_resource type="Texture2D" uid="uid://b0gba05ced1ah" path="res://assets/RPG Battlers/32x32 single battlers/12 v2.png" id="2_m3b5b"]
+
+[resource]
+script = ExtResource("1_26i5j")
+title = "GreenMouse"
+texture = ExtResource("2_m3b5b")
+health = 10.0
+damage = 1.0
+type = 0
+speed = 0.0

@@ -1,0 +1,255 @@
+[gd_scene load_steps=20 format=3 uid="uid://cw0j56dydxh5f"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_igmbi"]
+[ext_resource type="Texture2D" uid="uid://b344548pufh6l" path="res://assets/cat.png" id="2_51xpt"]
+[ext_resource type="PackedScene" uid="uid://ctwj3yfpdms42" path="res://scenes/slot.tscn" id="2_kp2nh"]
+[ext_resource type="Texture2D" uid="uid://d0sunhxs1e62f" path="res://assets/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_spritesheet.png" id="2_ot2cy"]
+[ext_resource type="PackedScene" uid="uid://le4lnsx5jem8" path="res://objects/Weapons/sword.tscn" id="3_fkd4c"]
+[ext_resource type="Resource" uid="uid://cdamcpijcyd6g" path="res://Resource/Weapons/magic_flower.tres" id="3_vp1jm"]
+[ext_resource type="Resource" uid="uid://e7va6u7wg84u" path="res://Resource/Weapons/sword.tres" id="4_gpg4u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5yv0"]
+atlas = ExtResource("2_ot2cy")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxhkr"]
+atlas = ExtResource("2_ot2cy")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fc2vk"]
+atlas = ExtResource("2_ot2cy")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjiau"]
+atlas = ExtResource("2_ot2cy")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wkyif"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5yv0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxhkr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fc2vk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjiau")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5mt6"]
+size = Vector2(47, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5kr0"]
+size = Vector2(47, 45)
+
+[sub_resource type="Animation" id="Animation_22vmi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"dead"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_tsyjk"]
+resource_name = "dead"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.433333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.433333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"dead"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.433333, 0.466667, 0.533333, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_s1yu7"]
+resource_name = "hurt"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.433333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hwgnp"]
+_data = {
+"RESET": SubResource("Animation_22vmi"),
+"dead": SubResource("Animation_tsyjk"),
+"hurt": SubResource("Animation_s1yu7")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ms82k"]
+radius = 158.382
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_igmbi")
+
+[node name="WeaponInventory" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Weapons" type="HBoxContainer" parent="WeaponInventory"]
+offset_right = 128.0
+offset_bottom = 40.0
+
+[node name="Slot" parent="WeaponInventory/Weapons" instance=ExtResource("2_kp2nh")]
+layout_mode = 2
+weapon = ExtResource("3_vp1jm")
+
+[node name="Slot2" parent="WeaponInventory/Weapons" instance=ExtResource("2_kp2nh")]
+layout_mode = 2
+weapon = ExtResource("4_gpg4u")
+
+[node name="Slot3" parent="WeaponInventory/Weapons" instance=ExtResource("2_kp2nh")]
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wkyif")
+animation = &"dead"
+frame = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.41875, 0.414583)
+texture = ExtResource("2_51xpt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_e5mt6")
+
+[node name="TakeDamage" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Collision" type="CollisionShape2D" parent="TakeDamage"]
+unique_name_in_owner = true
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_p5kr0")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Sword" parent="." instance=ExtResource("3_fkd4c")]
+visible = false
+light_mask = 0
+visibility_layer = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hwgnp")
+}
+
+[node name="AimArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AimArea"]
+shape = SubResource("CircleShape2D_ms82k")
+
+[node name="ReloadTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthBar" type="ProgressBar" parent="UI"]
+unique_name_in_owner = true
+modulate = Color(0.177106, 0.811951, 0, 1)
+layout_mode = 0
+offset_left = -23.0
+offset_top = -32.0
+offset_right = 18.0
+offset_bottom = -25.0
+scale = Vector2(1.12, 1)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+show_percentage = false
+
+[connection signal="body_entered" from="TakeDamage" to="." method="_on_take_damage_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="enemy_entered" from="Sword" to="." method="_on_sword_enemy_entered"]
+[connection signal="body_entered" from="AimArea" to="." method="_on_aim_area_body_entered"]
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

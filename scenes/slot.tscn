@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctwj3yfpdms42"]
+
+[ext_resource type="Script" path="res://scenes/slot.gd" id="1_6xqr0"]
+
+[node name="Slot" type="PanelContainer"]
+anchors_preset = -1
+anchor_right = 0.0347222
+anchor_bottom = 0.084
+offset_bottom = -14.432
+size_flags_horizontal = 4
+script = ExtResource("1_6xqr0")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Cooldown" type="Timer" parent="."]
+autostart = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+size_flags_vertical = 1
+value = 68.0
+show_percentage = false
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
