@@ -4,6 +4,7 @@
 
 # Folder-specific ignores
 /addons/
+/htmlexport
 
 # Godot-specific ignores
 .import/
