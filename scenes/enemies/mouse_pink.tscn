@@ -1,12 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dst0570sk5ran"]
+[gd_scene load_steps=12 format=3 uid="uid://dst0570sk5ran"]
 
 [ext_resource type="Script" path="res://scenes/enemies/mouse_pink.gd" id="1_58c17"]
 [ext_resource type="Script" path="res://objects/EnemyType.gd" id="2_aw76r"]
-[ext_resource type="Texture2D" uid="uid://djnhlanypptak" path="res://assets/RPG Battlers/32x32 single battlers/03 v2.png" id="2_h7i6w"]
 [ext_resource type="PackedScene" uid="uid://gxeh0f8rlfn3" path="res://objects/Drops/potions/life_potion.tscn" id="2_twq44"]
 [ext_resource type="PackedScene" uid="uid://c2v3ivyoqfyqd" path="res://objects/Drops/potions/damage_potion.tscn" id="3_mxo50"]
 [ext_resource type="Texture2D" uid="uid://j5qirj524pba" path="res://assets/RPG Battlers/32x32 single battlers/12 v1.png" id="3_orhb4"]
-[ext_resource type="AudioStream" uid="uid://dngvsqi7ntk0l" path="res://assets/sounds/mouse-2.wav" id="7_xxqsy"]
+[ext_resource type="AudioStream" uid="uid://dngvsqi7ntk0l" path="res://assets/sounds/enemies/mouse-2.wav" id="7_xxqsy"]
 
 [sub_resource type="Resource" id="Resource_fo25p"]
 script = ExtResource("2_aw76r")
@@ -98,12 +97,12 @@ _data = {
 
 [node name="MousePink" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 18
 script = ExtResource("1_58c17")
 enemy_data = SubResource("Resource_fo25p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_h7i6w")
+texture = ExtResource("3_orhb4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_atoo8")

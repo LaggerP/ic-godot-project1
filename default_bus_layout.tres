@@ -1,0 +1,8 @@
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://db4sbq2sh86nu"]
+
+[sub_resource type="AudioEffectEQ" id="AudioEffectEQ_b7gir"]
+resource_name = "EQ"
+
+[resource]
+bus/0/effect/0/effect = SubResource("AudioEffectEQ_b7gir")
+bus/0/effect/0/enabled = true

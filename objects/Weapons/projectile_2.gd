@@ -16,3 +16,6 @@ func _on_body_entered(body: Node2D) -> void:
 #free projectile when it leaves the screen
 func _on_screen_exited() -> void:
 		queue_free()
+
+func reproduce_sound():
+	$AudioStreamPlayer.play()

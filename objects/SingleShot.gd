@@ -12,6 +12,8 @@ func shoot(source, target, scene_tree):
 	projectile.speed = speed
 	projectile.direction = (target.position - source.position).normalized()
 	projectile.look_at(target.position)
+	if projectile.has_method("reproduce_sound"):
+		projectile.reproduce_sound()
 	scene_tree.current_scene.add_child(projectile)
 
 

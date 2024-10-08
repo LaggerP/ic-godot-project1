@@ -4,7 +4,7 @@ extends Area2D
 	set(v):
 		value = v
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$Animation.play("idle")
 
 func _on_body_entered(body: Node2D) -> void:

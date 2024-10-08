@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3l1w0leyegkt"]
+
+[ext_resource type="Script" path="res://scenes/credits.gd" id="1_t54gc"]
+[ext_resource type="AudioStream" uid="uid://b3vodefssb056" path="res://assets/sounds/MenuSelectionClick.wav" id="2_e41y1"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t54gc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Credits title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Créditos"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pablo" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Desarrollo
+Yo
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Engine" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "
+Motor gráfico
+Godot
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Assets" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "
+Recursos
+https://opengameart.org/content/dark-ambient-0)
+https://o-lobster.itch.io/simple-dungeon-crawler-16x16-pixel-pack
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 170
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Regresar"
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_e41y1")
+volume_db = -12.325
+
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_button_pressed"]

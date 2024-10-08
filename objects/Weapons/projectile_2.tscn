@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://wyaxgwy0cjek"]
+[gd_scene load_steps=10 format=3 uid="uid://wyaxgwy0cjek"]
 
 [ext_resource type="Script" path="res://objects/Weapons/projectile_2.gd" id="1_6b44g"]
+[ext_resource type="AudioStream" uid="uid://cighoepnodjny" path="res://assets/sounds/weapons/flaunch.wav" id="2_6umls"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_w3qec"]
 size = Vector2(10, 10)
@@ -57,6 +58,10 @@ shape = SubResource("RectangleShape2D_qe15s")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 amount = 220
 process_material = SubResource("ParticleProcessMaterial_2rri5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_6umls")
+autoplay = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]

@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://bbj6uimixyy2k"]
+[gd_scene load_steps=11 format=3 uid="uid://bbj6uimixyy2k"]
 
 [ext_resource type="Script" path="res://scenes/enemies/worm.gd" id="1_88qy1"]
-[ext_resource type="Texture2D" uid="uid://djnhlanypptak" path="res://assets/RPG Battlers/32x32 single battlers/03 v2.png" id="2_kpi6g"]
 [ext_resource type="PackedScene" uid="uid://c2v3ivyoqfyqd" path="res://objects/Drops/potions/damage_potion.tscn" id="2_sfwav"]
 [ext_resource type="Script" path="res://objects/EnemyType.gd" id="3_8ouav"]
 [ext_resource type="PackedScene" uid="uid://gxeh0f8rlfn3" path="res://objects/Drops/potions/life_potion.tscn" id="3_ktfli"]
@@ -45,6 +44,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_o1asy"]
 resource_name = "hit"
@@ -73,6 +84,29 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(0.982634, 0.00113586, 0.000622234, 1), Color(1, 1, 1, 1), Color(0.984314, 0, 0, 1), Color(1, 1, 1, 1)]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/2/use_blend = true
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6ujnd"]
 _data = {
@@ -82,12 +116,12 @@ _data = {
 
 [node name="Worm" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 18
 script = ExtResource("1_88qy1")
 enemy_data = SubResource("Resource_xo7qt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_kpi6g")
+texture = ExtResource("4_6onwm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_atoo8")
@@ -96,3 +130,6 @@ shape = SubResource("RectangleShape2D_atoo8")
 libraries = {
 "": SubResource("AnimationLibrary_6ujnd")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+autoplay = true

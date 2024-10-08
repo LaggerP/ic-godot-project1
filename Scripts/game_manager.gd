@@ -21,7 +21,7 @@ func on_enemy_dead():
 func new_level():
 	#check for more levels
 	if !has_next_level(): 
-		current_level = 1 #reset level
+		reset()
 		get_tree().call_group("ui_events", "show_finish_game_panel")
 	increment_current_level()
 	enemies_killed = 0
@@ -29,14 +29,12 @@ func new_level():
 	get_tree().paused = true
 	
 func game_over():
-	#check for more levels
-	current_level = 1 #reset level
-	enemies_killed = 0 #reset enemies
+	reset()
 	get_tree().call_group("ui_events", "show_game_over_game_panel")
 	get_tree().paused = true
 
 func increment_current_level() -> void:
-	if current_level != level_dictionary.size():
+	if has_next_level():
 		current_level += 1
 
 func get_current_level() -> int:
@@ -61,3 +59,11 @@ func increment_damage():
 	weapon_upgrades["increment_damage"] = true
 func decrement_cooldown():
 	weapon_upgrades["decrement_cooldown"] = true
+	
+
+func reset():
+	current_level = 1
+	enemies_killed = 0
+	weapon_upgrades["increment_velocity"] = false
+	weapon_upgrades["increment_damage"] = false
+	weapon_upgrades["decrement_cooldown"] = false

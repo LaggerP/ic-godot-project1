@@ -8,7 +8,6 @@ var direction: Vector2
 var knockback: Vector2
 var separation: float #separation between enemy and player
 
-
 func _ready() -> void:
 	$Sprite2D.texture = enemy_data.texture
 	$Sprite2D.material = load("res://Shaders/Rainbow.tres") #load Rainbow shader if the enemy has elite flag in true
@@ -32,7 +31,7 @@ func knockback_update(delta):
 		knockback = knockback.move_toward(Vector2.ZERO, 1)
 		velocity += knockback
 		var collider = move_and_collide(velocity * delta)
-		if collider:
+		if collider and collider.get_collider().get_class() != "TileMapLayer":
 			collider.get_collider().knockback = (collider.get_collider().global_position - global_position).normalized() * 50
 			
 func damage_popup(amount, is_critical = false):
@@ -60,9 +59,3 @@ func drop_item():
 	if item:
 		get_tree().root.add_child.call_deferred(item)
 		item.global_position = global_position
-
-
-#only for elite enemies
-func _on_attack_area_body_entered(body: Node2D) -> void:
-	print(body)
-	pass # Replace with function body.

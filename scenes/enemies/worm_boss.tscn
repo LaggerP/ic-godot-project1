@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://buqktns5wvyoq"]
+[gd_scene load_steps=9 format=3 uid="uid://buqktns5wvyoq"]
 
 [ext_resource type="Script" path="res://scenes/enemies/worm_boss.gd" id="1_uvxub"]
 [ext_resource type="Script" path="res://objects/EnemyType.gd" id="3_l2u1e"]
-[ext_resource type="Texture2D" uid="uid://djnhlanypptak" path="res://assets/RPG Battlers/32x32 single battlers/03 v2.png" id="5_nn2h4"]
 [ext_resource type="Texture2D" uid="uid://nt41cqcl5x0s" path="res://assets/RPG Battlers/32x32 single battlers/09 v2.png" id="5_uf8la"]
 
 [sub_resource type="Resource" id="Resource_kf1j7"]
@@ -10,9 +9,9 @@ script = ExtResource("3_l2u1e")
 title = "Worm boss"
 texture = ExtResource("5_uf8la")
 health = 100.0
-damage = 20.0
+damage = 30.0
 type = 1
-speed = 11.0
+speed = 10.0
 drop_items = Array[PackedScene]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_atoo8"]
@@ -80,12 +79,12 @@ _data = {
 
 [node name="WormBoss" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 18
 script = ExtResource("1_uvxub")
 enemy_data = SubResource("Resource_kf1j7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("5_nn2h4")
+texture = ExtResource("5_uf8la")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_atoo8")
