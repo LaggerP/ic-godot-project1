@@ -1,5 +1,4 @@
 extends PanelContainer
-@onready var label: Label = $Label
 
 @export var weapon: Weapon:
 	set(value):

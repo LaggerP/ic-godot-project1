@@ -1,23 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dst0570sk5ran"]
+[gd_scene load_steps=7 format=3 uid="uid://dst0570sk5ran"]
 
-[ext_resource type="Script" path="res://scenes/enemies/mouse_pink.gd" id="1_58c17"]
-[ext_resource type="Script" path="res://objects/EnemyType.gd" id="2_aw76r"]
-[ext_resource type="PackedScene" uid="uid://gxeh0f8rlfn3" path="res://objects/Drops/potions/life_potion.tscn" id="2_twq44"]
-[ext_resource type="PackedScene" uid="uid://c2v3ivyoqfyqd" path="res://objects/Drops/potions/damage_potion.tscn" id="3_mxo50"]
+[ext_resource type="PackedScene" uid="uid://dfs1cfhmxbuvd" path="res://scenes/enemies/enemy.tscn" id="1_ekwd0"]
 [ext_resource type="Texture2D" uid="uid://j5qirj524pba" path="res://assets/RPG Battlers/32x32 single battlers/12 v1.png" id="3_orhb4"]
 [ext_resource type="AudioStream" uid="uid://dngvsqi7ntk0l" path="res://assets/sounds/enemies/mouse-2.wav" id="7_xxqsy"]
-
-[sub_resource type="Resource" id="Resource_fo25p"]
-script = ExtResource("2_aw76r")
-title = "Pink enemy"
-texture = ExtResource("3_orhb4")
-health = 100.0
-damage = 1.0
-type = 0
-speed = 75.0
-drop_items = Array[PackedScene]([ExtResource("3_mxo50"), ExtResource("2_twq44")])
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_atoo8"]
 
 [sub_resource type="Animation" id="Animation_4cikt"]
 length = 0.001
@@ -44,6 +29,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hit:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_o1asy"]
@@ -73,21 +70,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(0.982634, 0.00113586, 0.000622234, 1), Color(1, 1, 1, 1), Color(0.984314, 0, 0, 1), Color(1, 1, 1, 1)]
 }
-tracks/2/type = "audio"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/path = NodePath("Hit:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"clips": [{
-"end_offset": 0.6009,
-"start_offset": 0.0,
-"stream": ExtResource("7_xxqsy")
-}],
-"times": PackedFloat32Array(0.0333333)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
-tracks/2/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6ujnd"]
 _data = {
@@ -95,22 +89,19 @@ _data = {
 "hit": SubResource("Animation_o1asy")
 }
 
-[node name="MousePink" type="CharacterBody2D" groups=["Enemy"]]
-collision_layer = 2
-collision_mask = 18
-script = ExtResource("1_58c17")
-enemy_data = SubResource("Resource_fo25p")
+[node name="MousePink" instance=ExtResource("1_ekwd0")]
+health = 100.0
+damage = 1.0
+speed = 75.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" parent="." index="0"]
+modulate = Color(1, 1, 1, 1)
 texture = ExtResource("3_orhb4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_atoo8")
-
-[node name="EnemyAnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="EnemyAnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 libraries = {
 "": SubResource("AnimationLibrary_6ujnd")
 }
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-attenuation = 3.605
+[node name="Hit" parent="." index="3"]
+stream = ExtResource("7_xxqsy")

@@ -1,0 +1,271 @@
+[gd_scene load_steps=22 format=3 uid="uid://b1lvjlf6gphlh"]
+
+[ext_resource type="PackedScene" uid="uid://dfs1cfhmxbuvd" path="res://scenes/enemies/enemy.tscn" id="1_i7jkc"]
+[ext_resource type="Script" path="res://scenes/enemies/globin.gd" id="2_iwduj"]
+[ext_resource type="AudioStream" uid="uid://wmw7emsxi2rb" path="res://assets/sounds/enemies/hit4.ogg" id="2_ke67j"]
+[ext_resource type="Texture2D" uid="uid://bu3xrw07d72yj" path="res://assets/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_run_anim_f0.png" id="3_salgk"]
+[ext_resource type="Texture2D" uid="uid://bpw42aepo8y7q" path="res://assets/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_idle_anim_f0.png" id="4_hn5we"]
+[ext_resource type="Texture2D" uid="uid://dy12ca78qcvqp" path="res://assets/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_run_anim_f1.png" id="4_yvikt"]
+[ext_resource type="Texture2D" uid="uid://4m25iojc61tn" path="res://assets/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_idle_anim_f1.png" id="5_3e2vj"]
+[ext_resource type="Texture2D" uid="uid://b8fcvdfw7v8yd" path="res://assets/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_run_anim_f2.png" id="5_5fa8d"]
+[ext_resource type="Texture2D" uid="uid://dfi8xss4h4rdk" path="res://assets/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_idle_anim_f2.png" id="6_3jcox"]
+[ext_resource type="Texture2D" uid="uid://dqwaq063t67q3" path="res://assets/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_run_anim_f3.png" id="6_lolcy"]
+[ext_resource type="Texture2D" uid="uid://k5qv1eerecph" path="res://assets/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_idle_anim_f3.png" id="7_7i5n1"]
+[ext_resource type="Texture2D" uid="uid://cxbxdvdmisaf1" path="res://assets/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_run_anim_f4.png" id="7_pf5wy"]
+[ext_resource type="Texture2D" uid="uid://be7dmf2u62p71" path="res://assets/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_run_anim_f5.png" id="8_86wpb"]
+[ext_resource type="Texture2D" uid="uid://dv3dti4wg2elf" path="res://assets/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_idle_anim_f4.png" id="8_nmep6"]
+[ext_resource type="Texture2D" uid="uid://ckty20ofmdck5" path="res://assets/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_idle_anim_f5.png" id="9_sq0uf"]
+[ext_resource type="Texture2D" uid="uid://bu5cxdv0rs75l" path="res://assets/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_knife.png" id="10_yujhy"]
+
+[sub_resource type="Animation" id="Animation_4cikt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hit:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedSprite2D:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimatedSprite2D/GoblinKnife:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8.47059, -1.41176)]
+}
+
+[sub_resource type="Animation" id="Animation_o1asy"]
+resource_name = "hit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hit:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333, 0.1, 0.166667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.984314, 0, 0, 1), Color(1, 1, 1, 1), Color(0.984314, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"idle", &"walk"]
+}
+
+[sub_resource type="Animation" id="Animation_qwdov"]
+resource_name = "walk"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D/GoblinKnife:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333, 0.1, 0.166667, 0.233333, 0.3, 0.366667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(8.47059, -1.41176), Vector2(8.471, -1.9), Vector2(8.47059, -1.41176), Vector2(8.471, -1.9), Vector2(8.47059, -1.41176), Vector2(8.471, -1.9), Vector2(8.471, -1.9)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ujnd"]
+_data = {
+"RESET": SubResource("Animation_4cikt"),
+"hit": SubResource("Animation_o1asy"),
+"walk": SubResource("Animation_qwdov")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hetfl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_hn5we")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3e2vj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3jcox")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7i5n1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nmep6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_sq0uf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_salgk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yvikt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5fa8d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lolcy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pf5wy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_86wpb")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Globin" instance=ExtResource("1_i7jkc")]
+script = ExtResource("2_iwduj")
+health = 90.0
+damage = 20.0
+speed = 60.0
+
+[node name="Sprite2D" parent="." index="0"]
+modulate = Color(1, 1, 1, 1)
+texture_filter = 1
+scale = Vector2(2.125, 2.125)
+
+[node name="EnemyAnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_6ujnd")
+}
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="." index="3"]
+stream = ExtResource("2_ke67j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4"]
+texture_filter = 1
+scale = Vector2(2.125, 2.125)
+sprite_frames = SubResource("SpriteFrames_hetfl")
+animation = &"walk"
+
+[node name="GoblinKnife" type="Sprite2D" parent="AnimatedSprite2D" index="0"]
+position = Vector2(8.47059, -1.41176)
+scale = Vector2(0.647059, 0.647059)
+texture = ExtResource("10_yujhy")

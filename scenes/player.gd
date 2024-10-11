@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @onready var sword: Node2D = get_node("%Sword")
 
@@ -41,7 +42,7 @@ func take_damage(enemy_damage):
 	health -= enemy_damage
 
 func _on_take_damage_body_entered(body: Node2D) -> void:
-	take_damage(body.enemy_data.damage)
+	take_damage(body.damage)
 
 func _on_timer_timeout() -> void:
 	%Collision.set_deferred("disabled", true)

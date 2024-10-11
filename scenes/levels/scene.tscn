@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://p7xmrsgqrem6"]
+[gd_scene load_steps=23 format=4 uid="uid://p7xmrsgqrem6"]
 
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="1_yxmu0"]
 [ext_resource type="AudioStream" uid="uid://dbkguudpi4wot" path="res://assets/sounds/cat_purrsleepy_loop.wav" id="2_cy3r7"]
@@ -7,6 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://gbtngbruhdv6" path="res://scenes/spawners/enemy_spawner.tscn" id="4_15bcs"]
 [ext_resource type="PackedScene" uid="uid://cw0j56dydxh5f" path="res://scenes/player.tscn" id="5_ex4pu"]
 [ext_resource type="AudioStream" uid="uid://ujwh6lhsk0ek" path="res://assets/sounds/Dark-Amb.mp3" id="6_hiwlp"]
+[ext_resource type="PackedScene" uid="uid://b1lvjlf6gphlh" path="res://scenes/enemies/globin.tscn" id="8_7355m"]
+[ext_resource type="PackedScene" uid="uid://b5edeb4mnqrwl" path="res://scenes/enemies/mouse_grey.tscn" id="9_a15ij"]
+[ext_resource type="PackedScene" uid="uid://dst0570sk5ran" path="res://scenes/enemies/mouse_pink.tscn" id="10_jnfk3"]
+[ext_resource type="PackedScene" uid="uid://bbj6uimixyy2k" path="res://scenes/enemies/worm.tscn" id="11_0i6hr"]
+[ext_resource type="PackedScene" uid="uid://da3e7dymbtpeh" path="res://scenes/enemies/worm_boss.tscn" id="12_fjesv"]
+[ext_resource type="PackedScene" uid="uid://bss3ehn0we2d5" path="res://objects/Weapons/bomb.tscn" id="13_l1qa3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gkr00"]
 
@@ -493,6 +499,7 @@ tile_set = SubResource("TileSet_fnbve")
 
 [node name="Player" parent="." instance=ExtResource("5_ex4pu")]
 position = Vector2(576, 325)
+health = 164.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_hiwlp")
@@ -501,6 +508,10 @@ autoplay = true
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_15bcs")]
 position = Vector2(1562.14, 509.97)
 player = NodePath("../Player")
+enemies = Array[PackedScene]([ExtResource("8_7355m"), ExtResource("9_a15ij"), ExtResource("10_jnfk3"), ExtResource("11_0i6hr"), ExtResource("12_fjesv")])
+
+[node name="Bomb" parent="." instance=ExtResource("13_l1qa3")]
+position = Vector2(417, 447)
 
 [connection signal="pressed" from="UI/NextLevel/VBoxContainer/WeaponVelocityUpgrade" to="UI" method="_on_weapon_velocity_upgrade_pressed"]
 [connection signal="pressed" from="UI/NextLevel/VBoxContainer/WeaponDamageUpgrade" to="UI" method="_on_weapon_damage_upgrade_pressed"]

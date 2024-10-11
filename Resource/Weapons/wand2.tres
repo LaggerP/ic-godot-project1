@@ -13,3 +13,5 @@ cooldown = 10.0
 speed = 400.0
 projectile_node = ExtResource("1_e1o16")
 default_damage = 1.0
+knockback = 90.0
+critical_damage_probability = 35.0

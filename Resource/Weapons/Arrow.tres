@@ -13,3 +13,5 @@ cooldown = 3.0
 speed = 500.0
 projectile_node = ExtResource("1_hvamk")
 default_damage = 10.0
+knockback = 90.0
+critical_damage_probability = 10.0

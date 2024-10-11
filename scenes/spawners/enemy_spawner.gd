@@ -17,18 +17,17 @@ var second : int:
 var distance: float = 600 #distance from player
 var can_spawn: bool = true
 
-
 func _physics_process(_delta: float) -> void:
 	if get_tree().get_node_count_in_group("Enemy") < 400:
 		can_spawn = true
 	else:
 		can_spawn = false
 
-func spawn (pos: Vector2, is_elite: bool = false):
+func spawn(pos: Vector2, is_elite: bool = false):
 	if not can_spawn and not is_elite and player != null:
 		return
 		
-	var new_enemy = enemies.pick_random().instantiate()
+	var new_enemy = enemies.pick_random().instantiate() as Enemy
 	new_enemy.position = pos
 	new_enemy.player_ref = player
 	
@@ -38,7 +37,6 @@ func spawn (pos: Vector2, is_elite: bool = false):
 # get random position from player
 func get_rand_position()-> Vector2:
 	return player.position + distance * Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
-
 
 func _on_normal_timeout() -> void:
 	#spawn new enemy with each timeout
