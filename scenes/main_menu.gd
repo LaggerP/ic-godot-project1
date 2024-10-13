@@ -6,7 +6,6 @@ const MENU_SELECTION_CLICK = preload("res://assets/sounds/MenuSelectionClick.wav
 
 func _on_start_pressed() -> void:
 	reproduce_click_sound()
-	GameManager
 	get_tree().paused = false
 	get_tree().change_scene_to_packed(LEVEL_SCENE)
 	

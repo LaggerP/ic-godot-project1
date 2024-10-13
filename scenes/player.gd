@@ -1,10 +1,11 @@
 extends CharacterBody2D
 class_name Player
-
 @onready var sword: Node2D = get_node("%Sword")
+
 
 var enemy: CharacterBody2D
 var nearest_enemy_distance: float = INF
+var damage_popup_node = preload("res://scenes/damage.tscn")
 
 @export var speed: float = 300
 @export var health: float = 100:
@@ -40,6 +41,14 @@ func _physics_process(delta: float) -> void:
 func take_damage(enemy_damage):
 	$AnimationPlayer.play("hurt")
 	health -= enemy_damage
+	damage_popup(enemy_damage)
+
+func damage_popup(amount):
+	var pop = damage_popup_node.instantiate()
+	pop.text = str(amount)
+	pop.position = position + Vector2(-50,-25)
+	pop.modulate = Color.RED
+	get_tree().current_scene.add_child(pop)
 
 func _on_take_damage_body_entered(body: Node2D) -> void:
 	take_damage(body.damage)

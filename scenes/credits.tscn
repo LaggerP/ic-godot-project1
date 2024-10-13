@@ -1,7 +1,42 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3l1w0leyegkt"]
+[gd_scene load_steps=10 format=3 uid="uid://c3l1w0leyegkt"]
 
 [ext_resource type="Script" path="res://scenes/credits.gd" id="1_t54gc"]
 [ext_resource type="AudioStream" uid="uid://b3vodefssb056" path="res://assets/sounds/MenuSelectionClick.wav" id="2_e41y1"]
+[ext_resource type="Texture2D" uid="uid://dspgxv6md2y65" path="res://assets/screenshots/mainmenubg.png" id="2_mufwe"]
+[ext_resource type="FontFile" uid="uid://bohxxm2djjade" path="res://assets/fonts/HelpMe.ttf" id="3_nkjwk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ptphg"]
+texture = ExtResource("2_mufwe")
+modulate_color = Color(0.493545, 0.493546, 0.493546, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0anl8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbwx2"]
+bg_color = Color(0.122252, 0.122252, 0.122252, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 5
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2kyqu"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 5
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdip4"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 5
+shadow_offset = Vector2(3, 3)
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -11,6 +46,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_t54gc")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ptphg")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -36,7 +80,7 @@ vertical_alignment = 1
 [node name="Pablo" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Desarrollo
-Yo
+LaggerP
 "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -64,10 +108,21 @@ justification_flags = 170
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_nkjwk")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0anl8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gbwx2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2kyqu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_vdip4")
 text = "Regresar"
+icon_alignment = 1
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_e41y1")
 volume_db = -12.325
 
-[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

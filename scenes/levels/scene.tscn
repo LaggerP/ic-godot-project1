@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://p7xmrsgqrem6"]
+[gd_scene load_steps=22 format=4 uid="uid://p7xmrsgqrem6"]
 
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="1_yxmu0"]
 [ext_resource type="AudioStream" uid="uid://dbkguudpi4wot" path="res://assets/sounds/cat_purrsleepy_loop.wav" id="2_cy3r7"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://dst0570sk5ran" path="res://scenes/enemies/mouse_pink.tscn" id="10_jnfk3"]
 [ext_resource type="PackedScene" uid="uid://bbj6uimixyy2k" path="res://scenes/enemies/worm.tscn" id="11_0i6hr"]
 [ext_resource type="PackedScene" uid="uid://da3e7dymbtpeh" path="res://scenes/enemies/worm_boss.tscn" id="12_fjesv"]
-[ext_resource type="PackedScene" uid="uid://bss3ehn0we2d5" path="res://objects/Weapons/bomb.tscn" id="13_l1qa3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gkr00"]
 
@@ -509,9 +508,6 @@ autoplay = true
 position = Vector2(1562.14, 509.97)
 player = NodePath("../Player")
 enemies = Array[PackedScene]([ExtResource("8_7355m"), ExtResource("9_a15ij"), ExtResource("10_jnfk3"), ExtResource("11_0i6hr"), ExtResource("12_fjesv")])
-
-[node name="Bomb" parent="." instance=ExtResource("13_l1qa3")]
-position = Vector2(417, 447)
 
 [connection signal="pressed" from="UI/NextLevel/VBoxContainer/WeaponVelocityUpgrade" to="UI" method="_on_weapon_velocity_upgrade_pressed"]
 [connection signal="pressed" from="UI/NextLevel/VBoxContainer/WeaponDamageUpgrade" to="UI" method="_on_weapon_damage_upgrade_pressed"]

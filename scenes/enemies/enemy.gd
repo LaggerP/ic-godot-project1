@@ -45,6 +45,7 @@ func damage_popup(amount, is_critical):
 	pop.text = str(amount)
 	pop.position = position + Vector2(-50,-25)
 	if is_critical:
+		pop.text = "CRITICAL! " + str(amount)
 		pop.modulate = Color.YELLOW
 	get_tree().current_scene.add_child(pop)
 	
