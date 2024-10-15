@@ -498,7 +498,6 @@ tile_set = SubResource("TileSet_fnbve")
 
 [node name="Player" parent="." instance=ExtResource("5_ex4pu")]
 position = Vector2(576, 325)
-health = 164.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_hiwlp")

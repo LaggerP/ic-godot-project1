@@ -13,7 +13,6 @@ func _process(delta) -> void:
 	if $ProgressBar.value == $ProgressBar.max_value:
 		$ProgressBar.modulate = Color.SEA_GREEN
 	$ProgressBar.value += delta
-	
 
 func _on_cooldown_timeout() -> void:
 	if weapon:

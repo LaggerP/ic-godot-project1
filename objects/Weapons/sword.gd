@@ -13,7 +13,7 @@ func _on_enemy_body_entered(body: Node2D) -> void:
 		body.take_damage(damage, critial_damage)
 		#TODO maybe is a good mechanic change the knockback if the player use different weapon
 		body.knockback += direction * 75
-		damage = default_damage
+		damage = damage * 0.9
 	
 
 func is_critical_damage() -> bool:

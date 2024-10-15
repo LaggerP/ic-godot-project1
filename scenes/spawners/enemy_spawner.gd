@@ -18,13 +18,14 @@ var distance: float = 600 #distance from player
 var can_spawn: bool = true
 
 func _physics_process(_delta: float) -> void:
-	if get_tree().get_node_count_in_group("Enemy") < 400:
+	#limit the instances of Enemies
+	if get_tree().get_node_count_in_group("Enemy") < 200:
 		can_spawn = true
 	else:
 		can_spawn = false
 
 func spawn(pos: Vector2, is_elite: bool = false):
-	if not can_spawn and not is_elite and player != null:
+	if not can_spawn and player != null:
 		return
 		
 	var new_enemy = enemies.pick_random().instantiate() as Enemy

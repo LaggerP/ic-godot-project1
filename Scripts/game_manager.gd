@@ -8,6 +8,7 @@ var weapon_upgrades: Dictionary = {
 	"increment_velocity": false,
 	"decrement_cooldown": false,
 }
+var can_upgrade: bool = false
 
 func _ready() -> void:
 	add_to_group("enemy_events")
@@ -24,6 +25,7 @@ func new_level():
 		reset()
 		get_tree().call_group("ui_events", "show_finish_game_panel")
 	increment_current_level()
+	can_upgrade = true
 	enemies_killed = 0
 	get_tree().call_group("ui_events", "show_win_panel")
 	get_tree().paused = true

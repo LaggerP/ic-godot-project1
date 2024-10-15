@@ -1,7 +1,6 @@
 extends CharacterBody2D
 class_name Player
-@onready var sword: Node2D = get_node("%Sword")
-
+@onready var sword: Node2D = %Sword
 
 var enemy: CharacterBody2D
 var nearest_enemy_distance: float = INF
@@ -16,12 +15,14 @@ var damage_popup_node = preload("res://scenes/damage.tscn")
 			$AnimationPlayer.play("dead")
 			GameManager.game_over()
 
-
 func _ready() -> void:
 	add_to_group("player_events")
-	set_upgrades()
 
 func _physics_process(delta: float) -> void:
+	if GameManager.can_upgrade:
+		set_upgrades()
+		GameManager.can_upgrade = false
+		
 	if is_instance_valid(enemy):
 		nearest_enemy_distance = enemy.separation
 	else:
@@ -45,7 +46,7 @@ func take_damage(enemy_damage):
 
 func damage_popup(amount):
 	var pop = damage_popup_node.instantiate()
-	pop.text = str(amount)
+	pop.text = str(ceil(amount))
 	pop.position = position + Vector2(-50,-25)
 	pop.modulate = Color.RED
 	get_tree().current_scene.add_child(pop)

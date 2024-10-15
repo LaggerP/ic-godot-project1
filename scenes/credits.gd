@@ -2,7 +2,7 @@ extends Control
 
 @onready var click_sound: AudioStreamPlayer = $ClickSound
 const MENU_SELECTION_CLICK = preload("res://assets/sounds/MenuSelectionClick.wav")
-
+const MAIN_MENU = preload("res://scenes/main_menu.tscn")
 func reproduce_click_sound():
 	if !click_sound.is_playing():
 		click_sound.stream = MENU_SELECTION_CLICK

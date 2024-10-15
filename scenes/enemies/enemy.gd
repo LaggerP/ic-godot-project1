@@ -17,6 +17,7 @@ var separation: float #separation between enemy and player
 
 func _physics_process(delta: float) -> void:
 	#if Enemy has an animation with name walk, reproduce that animation every frame.
+	#ignore errors from debugger
 	if $EnemyAnimationPlayer.current_animation == "":
 		$EnemyAnimationPlayer.play("walk")
 	if is_instance_valid(player_ref):
@@ -42,7 +43,7 @@ func knockback_update(delta):
 			
 func damage_popup(amount, is_critical):
 	var pop = damage_popup_node.instantiate()
-	pop.text = str(amount)
+	pop.text = str(ceil(amount))
 	pop.position = position + Vector2(-50,-25)
 	if is_critical:
 		pop.text = "CRITICAL! " + str(amount)
