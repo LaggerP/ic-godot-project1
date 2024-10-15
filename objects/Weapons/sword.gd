@@ -3,17 +3,17 @@ extends Node2D
 var direction: Vector2 = Vector2.RIGHT
 var damage: float = 10
 var default_damage: float = damage
-var critical_damage_probability: float = 1
+var critical_damage_probability: float = 10
 
 func _on_enemy_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage"):
 		var critial_damage = is_critical_damage()
 		if critial_damage:
-			damage = damage * 1.1
-		body.take_damage(damage, critial_damage)
+			body.take_damage(damage * 1.1, critial_damage)
+		else:
+			body.take_damage(damage)
 		#TODO maybe is a good mechanic change the knockback if the player use different weapon
 		body.knockback += direction * 75
-		damage = damage * 0.9
 	
 
 func is_critical_damage() -> bool:

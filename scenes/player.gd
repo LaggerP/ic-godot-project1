@@ -59,7 +59,7 @@ func _on_timer_timeout() -> void:
 	%Collision.set_deferred("disabled", false)
 	
 func increase_temporal_damage() -> void:
-	sword.damage = sword.damage * 2
+	sword.damage += 10
 	var node = $WeaponInventory/Weapons
 	for N in node.get_children():
 		if "weapon" in N:
@@ -69,7 +69,7 @@ func increase_temporal_damage() -> void:
 
 func _on_damage_cooldown_timeout() -> void:
 	$DamageCooldown.stop()
-	sword.damage = sword.damage / 2
+	sword.damage = sword.default_damage
 	var node = $WeaponInventory/Weapons
 	for N in node.get_children():
 		if "weapon" in N:
@@ -83,6 +83,7 @@ func set_upgrades():
 		match key:
 			"increment_damage":
 				if upgrades[key]:
+					sword.default_damage = sword.damage
 					sword.damage += 10
 					for N in node.get_children():
 						if "weapon" in N:
